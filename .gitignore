@@ -83,6 +83,7 @@ nbproject
 public/uploads/*
 !public/uploads/.gitkeep
 
+
 ############################
 # Node.js
 ############################
@@ -95,21 +96,29 @@ results
 node_modules
 .node_history
 
+
 ############################
 # Tests
 ############################
 
 coverage
 
+
 ############################
 # Strapi
 ############################
 
-.env
 license.txt
 exports
 .strapi
-dist
-build
 .strapi-updater.json
 .strapi-cloud.json
+
+# Không ignore build/dist để deploy lên cloud
+# Nếu bạn build trên máy local và muốn giữ lại các tệp này
+# !build/
+# !dist/
+
+# Ignore chỉ khi bạn deploy bằng CI/CD trên cloud
+# build/
+# dist/

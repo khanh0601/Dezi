@@ -824,7 +824,7 @@ export interface ApiProductDesignProductDesign extends Schema.CollectionType {
   info: {
     singularName: 'product-design';
     pluralName: 'product-designs';
-    displayName: 'Product design';
+    displayName: 'Product Design';
     description: '';
   };
   options: {

@@ -6,7 +6,6 @@ module.exports = ({ env }) => {
   const connections = {
     mysql2: {
       connection: {
-        connectionString: env('DATABASE_URL'),
         host: env('DATABASE_HOST', 'localhost'),
         port: env.int('DATABASE_PORT', 3306),
         database: env('DATABASE_NAME', 'strapi'),
@@ -26,7 +25,20 @@ module.exports = ({ env }) => {
       },
       pool: { min: env.int('DATABASE_POOL_MIN', 2), max: env.int('DATABASE_POOL_MAX', 10) },
     },
-    
+
+    postgres: {
+      connection: {
+        connectionString: env('DATABASE_URL'),
+        ssl: env.bool('DATABASE_SSL', true) && {
+          rejectUnauthorized: env.bool(
+            'DATABASE_SSL_REJECT_UNAUTHORIZED',
+            false
+          ),
+        },
+      },
+      pool: { min: env.int('DATABASE_POOL_MIN', 2), max: env.int('DATABASE_POOL_MAX', 10) },
+    },
+
     sqlite: {
       connection: {
         filename: path.join(
